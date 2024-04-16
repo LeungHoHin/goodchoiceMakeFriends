@@ -1,12 +1,17 @@
 package com.lhx.goodchoice.service.impl;
 
+import com.lhx.goodchoice.pojo.User;
 import com.lhx.goodchoice.service.UserService;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -56,10 +61,18 @@ class UserServiceImplTest {
     @Test
     public void addAccount() {
         String userAccount = "test12345";
-        String userPassword = "123456789";
-        String checkPassword = "123456789";
+        String userPassword = "12345678";
+        String checkPassword = "12345678";
         long result = userService.UserRegister(userAccount, userPassword, checkPassword);
         System.out.println("result = " + result);
 
+    }
+
+    @Test
+    public void searchUsersByTags() {
+        List<String> list = Arrays.asList("java","Go");
+        List<User> userList = userService.searchUsersByTags(list);
+        System.out.println("userList = " + userList);
+        Assert.assertNotNull(userList);
     }
 }

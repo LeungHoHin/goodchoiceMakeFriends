@@ -3,14 +3,12 @@ spring:
     name: user-center
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/good_choice
     username: root
     password: root
   session:
     timeout: 86400
-
-
 
 mybatis-plus:
   global-config:
@@ -18,8 +16,8 @@ mybatis-plus:
       logic-delete-field: isDeleted
       logic-delete-value: 1
       logic-not-delete-value: 0
-configuration:
-  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
 
 
 server:

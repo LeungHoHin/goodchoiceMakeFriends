@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lhx/goodchoice/service/impl/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lhx/goodchoice/service/impl/UserServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +65,7 @@
     "JUnit.SampleTest.testSelect.executor": "Run",
     "JUnit.UserServiceImplTest.addAccount.executor": "Run",
     "JUnit.UserServiceImplTest.executor": "Run",
+    "JUnit.UserServiceImplTest.searchUsersByTags.executor": "Run",
     "JUnit.UserServiceImplTest.userRegister.executor": "Run",
     "JUnit.addTest.executor": "Run",
     "JUnit.addTest.isAdded.executor": "Run",
@@ -73,7 +80,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Codes/javacode/spring-headline-part",
+    "last_opened_file_path": "D:/Codes/javacode/ssm-mybatisplus-part",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -82,7 +89,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.gitee.ui.GiteeSettingsConfigurable",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -101,28 +108,41 @@
       <recent name="com.lhx.usercenter.service.impl" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GoodChoiceApplication">
+  <component name="RunManager" selected="JUnit.UserServiceImplTest.searchUsersByTags">
     <configuration name="generated-requests | #14" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="14" requestIdentifier="#14" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" requestIdentifier="#7" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="generated-requests | #8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="8" requestIdentifier="#8" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration name="UserServiceImplTest.addAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="goodchoice-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lhx.goodchoice.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lhx.goodchoice.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.lhx.goodchoice.service.impl.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="addAccount" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+    <configuration name="UserServiceImplTest.searchUsersByTags" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="goodchoice-backend" />
-      <option name="filePath" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lhx.goodchoice.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lhx.goodchoice.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.lhx.goodchoice.service.impl.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="searchUsersByTags" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -143,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceImplTest.searchUsersByTags" />
+        <item itemvalue="JUnit.UserServiceImplTest.addAccount" />
         <item itemvalue="Spring Boot.GoodChoiceApplication" />
         <item itemvalue="HTTP Request.generated-requests | #14" />
         <item itemvalue="HTTP Request.generated-requests | #3" />
-        <item itemvalue="HTTP Request.generated-requests | #8" />
-        <item itemvalue="HTTP Request.generated-requests | #7" />
       </list>
     </recent_temporary>
   </component>
@@ -184,6 +204,7 @@
       <workItem from="1713183935468" duration="3408000" />
       <workItem from="1713249208219" duration="2919000" />
       <workItem from="1713253170045" duration="2021000" />
+      <workItem from="1713256085288" duration="5713000" />
     </task>
     <servers />
   </component>
@@ -204,14 +225,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java</url>
-          <line>160</line>
-          <properties class="com.lhx.goodchoice.service.impl.UserServiceImpl" method="deleteUser">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="7" />
+          <line>206</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
