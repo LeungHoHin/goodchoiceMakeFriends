@@ -17,7 +17,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,7 +28,7 @@ import java.util.stream.Collectors;
 import static com.lhx.goodchoice.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
- * @author Liang_Haoxuan
+ * @author 梁浩轩
  * @description 针对表【user(用户)】的数据库操作Service实现
  * @createDate 2024-04-08 14:54:08
  */
@@ -193,16 +195,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Override
     public List<User> searchUsersByTags(List<String> tagsList) {
-//        if (CollectionUtils.isEmpty(tagsList)) {
-//            throw new BusinessException(ErrorCode.PARAMS_ERROR);
-//        }
-//        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-//        for (String tagName : tagsList) {
-//            queryWrapper.like(User::getUserTags, tagName);
-//        }
-//
-//        List<User> userList = userMapper.selectList(queryWrapper);
-//        return userList.stream().map(this::dataMasking).collect(Collectors.toList());
+        if (CollectionUtils.isEmpty(tagsList)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
         List<User> userList = userMapper.selectList(queryWrapper);
         Gson gson = new Gson();
@@ -211,10 +206,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             if (StringUtils.isBlank(userTags)) {
                 return false;
             }
-            Set<String> tagSet = gson.fromJson(userTags, new TypeToken<Set<String>>() {
+            Set<String> tagsSet = gson.fromJson(userTags, new TypeToken<Set<String>>() {
             }.getType());
+            tagsSet = Optional.ofNullable(tagsSet).orElse(new HashSet<>());
             for (String tagName : tagsList) {
-                if (!tagSet.contains(tagName)) {
+                if (!tagsSet.contains(tagName)) {
                     return false;
                 }
             }
@@ -222,6 +218,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }).map(this::dataMasking).collect(Collectors.toList());
     }
 
+
+    @Deprecated
+    private List<User> searchUsersByTagsBySQL(List<String> tagsList) {
+        if (CollectionUtils.isEmpty(tagsList)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        for (String tagName : tagsList) {
+            queryWrapper.like(User::getUserTags, tagName);
+        }
+
+        List<User> userList = userMapper.selectList(queryWrapper);
+        return userList.stream().map(this::dataMasking).collect(Collectors.toList());
+    }
 
     /**
      * 身份校验

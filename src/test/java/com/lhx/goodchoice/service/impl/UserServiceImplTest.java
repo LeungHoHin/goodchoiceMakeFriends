@@ -72,7 +72,7 @@ class UserServiceImplTest {
     public void searchUsersByTags() {
         List<String> list = Arrays.asList("java","Go");
         List<User> userList = userService.searchUsersByTags(list);
-        System.out.println("userList = " + userList);
         Assert.assertNotNull(userList);
+        System.out.println("userList = " + userList);
     }
 }
