@@ -1,6 +1,7 @@
 package com.lhx.goodchoice.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -193,34 +194,34 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
 
+
+//    @Override
+//    public List<User> searchUsersByTags(List<String> tagNameList) {
+//        if (CollectionUtils.isEmpty(tagNameList)) {
+//            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+//        }
+//        // 1. 先查询所有用户
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        List<User> userList = userMapper.selectList(queryWrapper);
+//        Gson gson = new Gson();
+//        // 2. 在内存中判断是否包含要求的标签
+//        return userList.stream().filter(user -> {
+//            String tagsStr = user.getUserTags();
+//            Set<String> tempTagNameSet = gson.fromJson(tagsStr, new TypeToken<Set<String>>() {
+//            }.getType());
+//            tempTagNameSet = Optional.ofNullable(tempTagNameSet).orElse(new HashSet<>());
+//            for (String tagName : tagNameList) {
+//                if (!tempTagNameSet.contains(tagName)) {
+//                    return false;
+//                }
+//            }
+//            return true;
+//        }).map(this::dataMasking).collect(Collectors.toList());
+//    }
+
+
     @Override
     public List<User> searchUsersByTags(List<String> tagsList) {
-        if (CollectionUtils.isEmpty(tagsList)) {
-            throw new BusinessException(ErrorCode.PARAMS_ERROR);
-        }
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-        List<User> userList = userMapper.selectList(queryWrapper);
-        Gson gson = new Gson();
-        return userList.stream().filter(user -> {
-            String userTags = user.getUserTags();
-            if (StringUtils.isBlank(userTags)) {
-                return false;
-            }
-            Set<String> tagsSet = gson.fromJson(userTags, new TypeToken<Set<String>>() {
-            }.getType());
-            tagsSet = Optional.ofNullable(tagsSet).orElse(new HashSet<>());
-            for (String tagName : tagsList) {
-                if (!tagsSet.contains(tagName)) {
-                    return false;
-                }
-            }
-            return true;
-        }).map(this::dataMasking).collect(Collectors.toList());
-    }
-
-
-    @Deprecated
-    private List<User> searchUsersByTagsBySQL(List<String> tagsList) {
         if (CollectionUtils.isEmpty(tagsList)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
@@ -233,6 +234,23 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return userList.stream().map(this::dataMasking).collect(Collectors.toList());
     }
 
+    @Override
+    public int updateUser(User user, HttpServletRequest request) {
+        long userId = user.getUserId();
+        if (userId <= 0){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"用户id不存在");
+        }
+        User loginUser = (User) request.getSession().getAttribute(USER_LOGIN_STATE);
+        if (!isAdmin(loginUser) && loginUser.getUserId() != userId){
+            throw new BusinessException(ErrorCode.NO_AUTH,"没有修改权限");
+        }
+        User originalUser = userMapper.selectById(userId);
+        if (originalUser == null){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"所修改用户不存在");
+        }
+        return userMapper.updateById(user);
+    }
+
     /**
      * 身份校验
      *
@@ -241,6 +259,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      */
     public boolean isAdmin(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(USER_LOGIN_STATE);
+        return user != null && user.getUserRole() == 1;
+    }
+
+    public boolean isAdmin(User user){
         return user != null && user.getUserRole() == 1;
     }
 
@@ -265,6 +287,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         dataMaskedUser.setCreateTime(user.getCreateTime());
         dataMaskedUser.setUserRole(user.getUserRole());
         dataMaskedUser.setUserTags(user.getUserTags());
+        dataMaskedUser.setUserProfile(user.getUserProfile());
         return dataMaskedUser;
     }
 

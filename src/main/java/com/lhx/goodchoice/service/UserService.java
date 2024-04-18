@@ -79,8 +79,10 @@ public interface UserService extends IService<User> {
 
     /**
      * 根据用户的标签搜索用户
-     * @param tagsList
-     * @return
+     * @param tagsList 标签列表
+     * @return 根据标签搜索到的用户列表
      */
     List<User> searchUsersByTags(List<String> tagsList);
+
+    int updateUser(User user, HttpServletRequest request);
 }

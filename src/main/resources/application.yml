@@ -11,6 +11,11 @@ spring:
     password: root
   session:
     timeout: 86400
+    store-type: redis
+  redis:
+    port: 6379
+    host: localhost
+    database: 0
 
 mybatis-plus:
   global-config:
@@ -18,6 +23,7 @@ mybatis-plus:
       logic-delete-field: isDeleted
       logic-delete-value: 1
       logic-not-delete-value: 0
+
 
 
 

@@ -26,6 +26,8 @@ import java.util.Map;
 
 @RequestMapping("/user")
 @RestController
+@CrossOrigin
+//        (origins = "http://localhost:5173/")
 public class UserController {
 
     @Resource
@@ -40,7 +42,7 @@ public class UserController {
     @PostMapping("/register")
     public BaseResponse<Long> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
         if (userRegisterRequest == null) {
-            throw new BusinessException(ErrorCode.NULL_ERROR);
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传递参数为空");
         }
         String userAccount = userRegisterRequest.getUserAccount();
         String userPassword = userRegisterRequest.getUserPassword();
@@ -64,7 +66,7 @@ public class UserController {
     @PostMapping("/login")
     public BaseResponse<User> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
         if (userLoginRequest == null) {
-            throw new BusinessException(ErrorCode.NULL_ERROR);
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传递参数为空");
         }
 
         String userAccount = userLoginRequest.getUserAccount();
@@ -88,7 +90,7 @@ public class UserController {
     @PostMapping("/logout")
     public BaseResponse<Integer> userLogout(HttpServletRequest request) {
         if (request == null) {
-            throw new BusinessException(ErrorCode.NULL_ERROR);
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传递参数为空");
 
         }
         Integer logout = userService.userLogout(request);
@@ -106,7 +108,7 @@ public class UserController {
     @GetMapping("/search")
     public BaseResponse<List<User>> searchUsers(String userAccount, HttpServletRequest request) {
         if (StringUtils.isBlank(userAccount)) {
-            throw new BusinessException(ErrorCode.NULL_ERROR);
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传递参数为空");
         }
         List<User> users = userService.searchUsers(userAccount, request);
         return Result.ok(users);
@@ -120,11 +122,11 @@ public class UserController {
      * @return
      */
     @PostMapping("/delete")
-    public BaseResponse<Boolean> deleteUser(@RequestBody Map<String,Long> id, HttpServletRequest request) {
+    public BaseResponse<Boolean> deleteUser(@RequestBody Map<String, Long> id, HttpServletRequest request) {
         if (id.get("userId") < 0L) {
-            throw new BusinessException(ErrorCode.NULL_ERROR);
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传递参数为空");
         }
-        Boolean deleted = userService.deleteUser(id.get("userId"),request);
+        Boolean deleted = userService.deleteUser(id.get("userId"), request);
         return Result.ok(deleted);
     }
 
@@ -135,13 +137,43 @@ public class UserController {
      * @param request
      * @return
      */
-    @GetMapping("current")
+    @GetMapping("/current")
     public BaseResponse<User> getCurrentUser(HttpServletRequest request) {
         User currentUser = userService.getCurrentUser(request);
         return Result.ok(currentUser);
     }
 
 
+    /**
+     * 根据标签搜索用户
+     *
+     * @param tagsList 用户标签列表
+     * @return
+     */
+    @GetMapping("/search/tags")
+    public BaseResponse<List<User>> searUsersByTags(@RequestParam(required = false) List<String> tagsList) {
+        if (tagsList == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传递参数为空");
+        }
+        List<User> userList = userService.searchUsersByTags(tagsList);
+        return Result.ok(userList);
+    }
 
+
+    /**
+     * 修改用户信息
+     *
+     * @param user
+     * @param request
+     * @return
+     */
+    @PostMapping("/update")
+    public BaseResponse<Integer> updateUser(@RequestBody User user, HttpServletRequest request) {
+        if (user == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传递参数为空");
+        }
+        int update = userService.updateUser(user, request);
+        return Result.ok(update);
+    }
 
 }

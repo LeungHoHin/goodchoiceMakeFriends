@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="添加了根据标签搜索用户的方法">
+    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="上次的没提交到，重新提交一次">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4f492fd-df94-4e8b-9f44-4602728621b2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4f492fd-df94-4e8b-9f44-4602728621b2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/GoodChoiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/GoodChoiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/Knife4jConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/Knife4jConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/TagServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/TagServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lhx/goodchoice/service/impl/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lhx/goodchoice/service/impl/UserServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +37,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -64,19 +76,22 @@
     &quot;JUnit.UserServiceImplTest.userRegister.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.addTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.addTest.isAdded.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.goodchoice-backend [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.goodchoice-backend [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.goodchoice-backend [validate].executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.GoodChoiceApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.GoodChoiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.UserCenterApplication.executor&quot;: &quot;Debug&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Codes/javacode/ssm-mybatisplus-part&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Codes/javacode/yupao-backend-master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -85,7 +100,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;spring&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -96,6 +111,9 @@
     ]
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -160,8 +178,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.GoodChoiceApplication" />
-        <item itemvalue="JUnit.UserServiceImplTest.searchUsersByTags" />
         <item itemvalue="JUnit.UserServiceImplTest.addAccount" />
+        <item itemvalue="JUnit.UserServiceImplTest.searchUsersByTags" />
         <item itemvalue="HTTP Request.generated-requests | #14" />
         <item itemvalue="HTTP Request.generated-requests | #3" />
       </list>
@@ -175,6 +193,13 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringProfilesService">
+    <option name="activeProfiles">
+      <map>
+        <entry key="goodchoice-backend" value="dev" />
+      </map>
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="" />
@@ -203,7 +228,10 @@
       <workItem from="1713256085288" duration="6949000" />
       <workItem from="1713266965003" duration="3340000" />
       <workItem from="1713365921840" duration="2948000" />
-      <workItem from="1713412737495" duration="2833000" />
+      <workItem from="1713412737495" duration="11886000" />
+      <workItem from="1713428122244" duration="1165000" />
+      <workItem from="1713429299833" duration="2136000" />
+      <workItem from="1713431830989" duration="8648000" />
     </task>
     <task id="LOCAL-00001" summary="添加了根据标签搜索用户的方法">
       <option name="closed" value="true" />
@@ -221,11 +249,30 @@
       <option name="project" value="LOCAL" />
       <updated>1713366135536</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="上次的没提交到，重新提交一次">
+      <option name="closed" value="true" />
+      <created>1713418595032</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713418595032</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -240,7 +287,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加了根据标签搜索用户的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加了根据标签搜索用户的方法" />
+    <MESSAGE value="上次的没提交到，重新提交一次" />
+    <option name="LAST_COMMIT_MESSAGE" value="上次的没提交到，重新提交一次" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="userList.get(0)" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -60,11 +60,13 @@ class UserServiceImplTest {
 
     @Test
     public void addAccount() {
-        String userAccount = "test12345";
-        String userPassword = "12345678";
-        String checkPassword = "12345678";
-        long result = userService.UserRegister(userAccount, userPassword, checkPassword);
-        System.out.println("result = " + result);
+        for (int i = 2; i < 11; i++) {
+            String userAccount = "test111" + i;
+            String userPassword = "12345678";
+            String checkPassword = "12345678";
+            long result = userService.UserRegister(userAccount, userPassword, checkPassword);
+            System.out.println("result = " + result);
+        }
 
     }
 
