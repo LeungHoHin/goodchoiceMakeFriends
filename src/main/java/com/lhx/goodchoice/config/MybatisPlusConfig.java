@@ -7,6 +7,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * mybatis-plus配置
+ *
+ * @author 梁浩轩
+ */
+
 @Configuration
 @MapperScan("com.lhx.goodchoice.mapper")
 public class MybatisPlusConfig {

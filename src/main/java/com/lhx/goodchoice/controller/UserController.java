@@ -178,10 +178,9 @@ public class UserController {
     }
 
     @GetMapping("/recommend")
-    public BaseResponse<Page<User>> recommendUsers(long pageSize, long pageNum) {
-        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-        Page<User> users =userService.page(new Page<>(pageNum,pageSize),userQueryWrapper);
-        return Result.ok(users);
+    public BaseResponse<Page<User>> recommendUsers(long pageSize, long pageNum,HttpServletRequest request) {
+        Page<User> userPage = userService.recommendUsers(pageSize,pageNum,request);
+        return Result.ok(userPage);
     }
 
 }

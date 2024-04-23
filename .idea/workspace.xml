@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/MybatisPlusConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/WebMvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/once/InsertUsers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lhx/goodchoice/test/InsertUsersTest.java" afterDir="false" />
+    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="配置了分页插件，添加了主页用户的显示接口">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/RedisTemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/RedissonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/job/PreCacheJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/lhx/goodchoice/service/RedisTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/lhx/goodchoice/service/RedissonTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/GoodChoiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/GoodChoiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/Knife4jConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/Knife4jConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/MybatisPlusConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/MybatisPlusConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/config/WebMvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +69,8 @@
     "HTTP Request.generated-requests | #8.executor": "Run",
     "JUnit.InsertUsersTest.doInsertUsers.executor": "Debug",
     "JUnit.InsertUsersTest.testDoInsertUsers.executor": "Run",
+    "JUnit.RedisTest.test.executor": "Debug",
+    "JUnit.RedissonTest.userTest.executor": "Debug",
     "JUnit.SampleTest.executor": "Run",
     "JUnit.SampleTest.testSelect.executor": "Run",
     "JUnit.UserServiceImplTest.addAccount.executor": "Run",
@@ -91,7 +96,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Codes/javacode/ssm-mybatisplus-part",
+    "last_opened_file_path": "D:/Codes/javacode/yupao-backend-master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -161,51 +166,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.doInsertUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RedisTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="goodchoice-backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lhx.goodchoice.test.*" />
+          <option name="PATTERN" value="com.lhx.goodchoice.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lhx.goodchoice.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.lhx.goodchoice.service.impl.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="doInsertUsers" />
+      <option name="PACKAGE_NAME" value="com.lhx.goodchoice.service" />
+      <option name="MAIN_CLASS_NAME" value="com.lhx.goodchoice.service.RedisTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.searchUsersByTags" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RedissonTest.userTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="goodchoice-backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value=".*" />
+          <option name="PATTERN" value="com.lhx.goodchoice.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lhx.goodchoice.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.lhx.goodchoice.service.impl.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="searchUsersByTags" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceImplTest.testDoInsertUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="goodchoice-backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lhx.goodchoice.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8 (2)" />
-      <option name="PACKAGE_NAME" value="com.lhx.goodchoice.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.lhx.goodchoice.service.impl.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="testDoInsertUsers()" />
+      <option name="PACKAGE_NAME" value="com.lhx.goodchoice.service" />
+      <option name="MAIN_CLASS_NAME" value="com.lhx.goodchoice.service.RedissonTest" />
+      <option name="METHOD_NAME" value="userTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -228,10 +215,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.GoodChoiceApplication" />
+        <item itemvalue="JUnit.RedissonTest.userTest" />
+        <item itemvalue="JUnit.RedisTest.test" />
         <item itemvalue="JUnit.InsertUsersTest.doInsertUsers" />
         <item itemvalue="JUnit.InsertUsersTest.testDoInsertUsers" />
-        <item itemvalue="JUnit.UserServiceImplTest.testDoInsertUsers" />
-        <item itemvalue="JUnit.UserServiceImplTest.doInsertUsers" />
       </list>
     </recent_temporary>
   </component>
@@ -286,6 +273,7 @@
       <workItem from="1713713523256" duration="2543000" />
       <workItem from="1713757736109" duration="6720000" />
       <workItem from="1713783066763" duration="7933000" />
+      <workItem from="1713850339380" duration="5648000" />
     </task>
     <task id="LOCAL-00001" summary="添加了根据标签搜索用户的方法">
       <option name="closed" value="true" />
@@ -319,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713456447880</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="配置了分页插件，添加了主页用户的显示接口">
+      <option name="closed" value="true" />
+      <created>1713853102740</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713853102740</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +347,8 @@
     <MESSAGE value="添加了根据标签搜索用户的方法" />
     <MESSAGE value="上次的没提交到，重新提交一次" />
     <MESSAGE value="添加了修改用户信息的接口以及其具体实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加了修改用户信息的接口以及其具体实现" />
+    <MESSAGE value="配置了分页插件，添加了主页用户的显示接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="配置了分页插件，添加了主页用户的显示接口" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

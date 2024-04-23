@@ -2,6 +2,7 @@ package com.lhx.goodchoice.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -13,15 +14,19 @@ import com.lhx.goodchoice.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -47,6 +52,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Autowired
     private UserMapper userMapper;
+
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
 
 
     @Override
@@ -194,7 +202,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
 
-
 //    @Override
 //    public List<User> searchUsersByTags(List<String> tagNameList) {
 //        if (CollectionUtils.isEmpty(tagNameList)) {
@@ -237,25 +244,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public int updateUser(User user, HttpServletRequest request) {
         long userId = user.getUserId();
-        if (userId <= 0){
-            throw new BusinessException(ErrorCode.PARAMS_ERROR,"用户id不存在");
+        if (userId <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户id不存在");
         }
         User loginUser = (User) request.getSession().getAttribute(USER_LOGIN_STATE);
-        if (!isAdmin(loginUser) && loginUser.getUserId() != userId){
-            throw new BusinessException(ErrorCode.NO_AUTH,"没有修改权限");
+        if (!isAdmin(loginUser) && loginUser.getUserId() != userId) {
+            throw new BusinessException(ErrorCode.NO_AUTH, "没有修改权限");
         }
         User originalUser = userMapper.selectById(userId);
-        if (originalUser == null){
-            throw new BusinessException(ErrorCode.PARAMS_ERROR,"所修改用户不存在");
+        if (originalUser == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "所修改用户不存在");
         }
         return userMapper.updateById(user);
     }
 
     @Override
-    public List<User> recommendUsers() {
+    public Page<User> recommendUsers(long pageSize, long pageNum, HttpServletRequest request) {
+        User currentUser = getCurrentUser(request);
+        String redisKey = String.format("goodchoice:user:recommend:%s", currentUser.getUserId());
+        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
+        //如果又缓存的话直接读缓存
+        Page<User> usersPage = (Page<User>) valueOperations.get(redisKey);
+        if (usersPage != null) {
+            return usersPage;
+        }
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-        List<User> originalUsers = userMapper.selectList(queryWrapper);
-        return originalUsers.stream().map(user -> dataMasking(user)).collect(Collectors.toList());
+        usersPage = page(new Page<>(pageNum, pageSize), queryWrapper);
+        try {
+            valueOperations.set(redisKey, usersPage, 10, TimeUnit.MINUTES);
+        } catch (Exception e) {
+            log.error("redis set ket error", e);
+        }
+        return usersPage;
     }
 
     /**
@@ -269,7 +289,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return user != null && user.getUserRole() == 1;
     }
 
-    public boolean isAdmin(User user){
+    public boolean isAdmin(User user) {
         return user != null && user.getUserRole() == 1;
     }
 

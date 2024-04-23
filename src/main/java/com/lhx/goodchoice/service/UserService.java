@@ -1,5 +1,6 @@
 package com.lhx.goodchoice.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.goodchoice.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -91,5 +92,5 @@ public interface UserService extends IService<User> {
      * todo：后期优化成根据标签推荐用户
      * @return
      */
-    List<User> recommendUsers();
+    Page<User> recommendUsers(long pageSize, long pageNum,HttpServletRequest request);
 }
