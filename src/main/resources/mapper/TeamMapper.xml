@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhx.goodchoice.mapper.TeamMapper">
+
+    <resultMap id="BaseResultMap" type="com.lhx.goodchoice.pojo.Team">
+            <id property="teamId" column="team_id" jdbcType="BIGINT"/>
+            <result property="teamName" column="team_name" jdbcType="VARCHAR"/>
+            <result property="teamDescription" column="team_description" jdbcType="VARCHAR"/>
+            <result property="teamMaxNum" column="team_max_num" jdbcType="INTEGER"/>
+            <result property="teamExpireTime" column="team_expire_time" jdbcType="TIMESTAMP"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="teamStatus" column="team_status" jdbcType="INTEGER"/>
+            <result property="teamPassword" column="team_password" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        team_id,team_name,team_description,
+        team_max_num,team_expire_time,user_id,
+        team_status,team_password,create_time,
+        update_time,is_deleted
+    </sql>
+</mapper>
