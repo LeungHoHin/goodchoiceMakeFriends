@@ -1,6 +1,8 @@
 package com.lhx.goodchoice.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.goodchoice.common.BaseResponse;
 import com.lhx.goodchoice.common.ErrorCode;
 import com.lhx.goodchoice.common.Result;
@@ -26,8 +28,7 @@ import java.util.Map;
 
 @RequestMapping("/user")
 @RestController
-@CrossOrigin
-//        (origins = "http://localhost:5173/")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class UserController {
 
     @Resource
@@ -174,6 +175,13 @@ public class UserController {
         }
         int update = userService.updateUser(user, request);
         return Result.ok(update);
+    }
+
+    @GetMapping("/recommend")
+    public BaseResponse<Page<User>> recommendUsers(long pageSize, long pageNum) {
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        Page<User> users =userService.page(new Page<>(pageNum,pageSize),userQueryWrapper);
+        return Result.ok(users);
     }
 
 }

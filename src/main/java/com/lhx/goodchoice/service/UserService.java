@@ -85,4 +85,11 @@ public interface UserService extends IService<User> {
     List<User> searchUsersByTags(List<String> tagsList);
 
     int updateUser(User user, HttpServletRequest request);
+
+    /**
+     * 暂定：首页显示所有用户
+     * todo：后期优化成根据标签推荐用户
+     * @return
+     */
+    List<User> recommendUsers();
 }

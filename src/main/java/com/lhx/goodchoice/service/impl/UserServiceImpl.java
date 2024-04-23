@@ -251,6 +251,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return userMapper.updateById(user);
     }
 
+    @Override
+    public List<User> recommendUsers() {
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        List<User> originalUsers = userMapper.selectList(queryWrapper);
+        return originalUsers.stream().map(user -> dataMasking(user)).collect(Collectors.toList());
+    }
+
     /**
      * 身份校验
      *
