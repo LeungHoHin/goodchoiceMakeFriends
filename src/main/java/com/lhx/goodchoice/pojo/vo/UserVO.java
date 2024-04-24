@@ -1,20 +1,19 @@
-package com.lhx.goodchoice.pojo;
+package com.lhx.goodchoice.pojo.vo;
+
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
-/**
- * 用户
- * @TableName user
- */
-@TableName(value ="user")
+import java.io.Serializable;
+import java.util.Date;
+
 @Data
-public class User implements Serializable {
+public class UserVO implements Serializable {
+
+    private static final long serialVersionUID = -1749895843627888888L;
+
     /**
      * id
      */
@@ -66,15 +65,6 @@ public class User implements Serializable {
      */
     private Integer userStatus;
 
-    /**
-     * 用户自我介绍
-     */
-    private String userProfile;
-
-    /**
-     * 用户已创建队伍
-     */
-    private Integer userCreatedTeams;
 
     /**
      * 用户角色 0-普通用户 1-管理员
@@ -91,16 +81,4 @@ public class User implements Serializable {
      */
     private Date updateTime;
 
-    /**
-     * 是否删除
-     */
-    private Integer deleteTime;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDeleted;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

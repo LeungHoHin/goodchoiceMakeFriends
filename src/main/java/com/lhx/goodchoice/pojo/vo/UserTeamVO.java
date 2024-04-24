@@ -1,24 +1,31 @@
-package com.lhx.goodchoice.pojo;
+package com.lhx.goodchoice.pojo.vo;
+
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+
+
 /**
- * 队伍
- * @TableName team
+ * 用户和队伍信息封装类
+ *
+ * @author 梁浩轩
  */
-@TableName(value ="team")
 @Data
-public class Team implements Serializable {
+public class UserTeamVO implements Serializable {
+
+
+    private static final long serialVersionUID = 6478699439595907689L;
+
+
     /**
      * 队伍id
      */
-    @TableId(type = IdType.AUTO)
     private Long teamId;
 
     /**
@@ -51,10 +58,6 @@ public class Team implements Serializable {
      */
     private Integer teamStatus;
 
-    /**
-     * 密码
-     */
-    private String teamPassword;
 
     /**
      * 创建时间
@@ -67,15 +70,13 @@ public class Team implements Serializable {
     private Date updateTime;
 
     /**
-     * 是否删除
+     * 创建人的信息
      */
-    private Integer isDeleted;
+    private UserVO userVO;
 
     /**
-     * 队伍人数
+     * 是否已经加入队伍
      */
-    private Integer teamNum;
+    private boolean hasJoin = false;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

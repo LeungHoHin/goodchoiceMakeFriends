@@ -2,16 +2,32 @@ package com.lhx.goodchoice.service;
 
 import com.lhx.goodchoice.pojo.Team;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lhx.goodchoice.pojo.User;
+import com.lhx.goodchoice.pojo.request.TeamUpdateRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
-* @author 梁浩轩
+* @author Neveremoer
 * @description 针对表【team(队伍)】的数据库操作Service
-* @createDate 2024-04-23 20:22:20
+* @createDate 2024-04-24 18:15:44
 */
 public interface TeamService extends IService<Team> {
 
+    /**
+     * 用户新增（创建）队伍
+     * @param team
+     * @param loginUser
+     * @return
+     */
+    long addTeam(Team team, User loginUser);
 
-    long addTeam(Team team, HttpServletRequest request);
+
+    /**
+     * 用户修改队伍信息
+     * @param teamUpdateRequest
+     * @param loginUser
+     * @return
+     */
+    boolean updateTeam(TeamUpdateRequest teamUpdateRequest, User loginUser);
 }

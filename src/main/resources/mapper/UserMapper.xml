@@ -14,19 +14,22 @@
             <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
             <result property="userEmail" column="user_email" jdbcType="VARCHAR"/>
             <result property="userTags" column="user_tags" jdbcType="VARCHAR"/>
+            <result property="userProfile" column="user_profile" jdbcType="VARCHAR"/>
             <result property="userStatus" column="user_status" jdbcType="INTEGER"/>
             <result property="userRole" column="user_role" jdbcType="INTEGER"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
             <result property="deleteTime" column="delete_time" jdbcType="TINYINT"/>
             <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+            <result property="userCreatedTeams" column="user_created_teams" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         user_id,user_name,user_account,
         avatar_url,user_gender,user_password,
         user_phone,user_email,user_tags,
-        user_status,user_role,create_time,
-        update_time,delete_time,is_deleted
+        user_profile,user_status,user_role,
+        create_time,update_time,delete_time,
+        is_deleted,user_created_teams
     </sql>
 </mapper>

@@ -1,11 +1,8 @@
 package com.lhx.goodchoice.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.lhx.goodchoice.common.ErrorCode;
 import com.lhx.goodchoice.exception.BusinessException;
 import com.lhx.goodchoice.pojo.User;
@@ -22,10 +19,7 @@ import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -152,7 +146,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
 
         //用户数据脱敏
-        User dataMaskedUser = dataMasking(user);
+        User dataMaskedUser = userDataMasking(user);
         //记录用户的登录态
         request.getSession().setAttribute(USER_LOGIN_STATE, user);
         return dataMaskedUser;
@@ -167,7 +161,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.like(User::getUserAccount, userAccount);
         List<User> users = userMapper.selectList(queryWrapper);
-        users.replaceAll(this::dataMasking);
+        users.replaceAll(this::userDataMasking);
         return users;
     }
 
@@ -192,7 +186,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
         Long userUserId = ordinaryUser.getUserId();
         User selectedUser = getById(userUserId);
-        return dataMasking(selectedUser);
+        return userDataMasking(selectedUser);
     }
 
     @Override
@@ -238,7 +232,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
 
         List<User> userList = userMapper.selectList(queryWrapper);
-        return userList.stream().map(this::dataMasking).collect(Collectors.toList());
+        return userList.stream().map(this::userDataMasking).collect(Collectors.toList());
     }
 
     @Override
@@ -278,30 +272,23 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return usersPage;
     }
 
-    /**
-     * 身份校验
-     *
-     * @param request HttpServletRequest request
-     * @return 是否为管理员
-     */
+
+    @Override
     public boolean isAdmin(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(USER_LOGIN_STATE);
         return user != null && user.getUserRole() == 1;
     }
 
+    @Override
     public boolean isAdmin(User user) {
         return user != null && user.getUserRole() == 1;
     }
 
 
-    /**
-     * 数据脱敏
-     *
-     * @param user 脱敏前的数据
-     * @return 脱敏后的数据
-     */
 
-    private User dataMasking(User user) {
+
+    @Override
+    public User userDataMasking(User user) {
         User dataMaskedUser = new User();
         dataMaskedUser.setUserId(user.getUserId());
         dataMaskedUser.setUserName(user.getUserName());
@@ -315,6 +302,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         dataMaskedUser.setUserRole(user.getUserRole());
         dataMaskedUser.setUserTags(user.getUserTags());
         dataMaskedUser.setUserProfile(user.getUserProfile());
+        dataMaskedUser.setUserCreatedTeams(user.getUserCreatedTeams());
         return dataMaskedUser;
     }
 

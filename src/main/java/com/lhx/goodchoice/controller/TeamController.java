@@ -8,7 +8,9 @@ import com.lhx.goodchoice.exception.BusinessException;
 import com.lhx.goodchoice.mapper.TeamMapper;
 import com.lhx.goodchoice.mapper.UserMapper;
 import com.lhx.goodchoice.pojo.Team;
+import com.lhx.goodchoice.pojo.User;
 import com.lhx.goodchoice.pojo.request.TeamAddRequest;
+import com.lhx.goodchoice.pojo.request.TeamUpdateRequest;
 import com.lhx.goodchoice.service.TeamService;
 import com.lhx.goodchoice.service.UserService;
 import com.lhx.goodchoice.service.UserTeamService;
@@ -40,8 +42,24 @@ public class TeamController {
         }
         Team team = new Team();
         BeanUtils.copyProperties(teamAddRequest, team);
-        long teamId = teamService.addTeam(team, request);
+        User loginUser = userService.getCurrentUser(request);
+        long teamId = teamService.addTeam(team, loginUser);
         return Result.ok(teamId);
     }
+
+
+    @PostMapping("/update")
+    public BaseResponse<Boolean> updateTeam(@RequestBody TeamUpdateRequest teamUpdateRequest, HttpServletRequest request) {
+        if (teamUpdateRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "队伍数据修改请求参数为空");
+        }
+        User loginUser = userService.getCurrentUser(request);
+        boolean updated = teamService.updateTeam(teamUpdateRequest, loginUser);
+        if (!updated) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR,"数据更新失败");
+        }
+        return Result.ok(true);
+    }
+
 
 }

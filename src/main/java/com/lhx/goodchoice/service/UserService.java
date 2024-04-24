@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
-* @author 梁浩轩
-* @description 针对表【user(用户)】的数据库操作Service
-* @createDate 2024-04-16 16:33:31
-*/
+ * @author 梁浩轩
+ * @description 针对表【user(用户)】的数据库操作Service
+ * @createDate 2024-04-16 16:33:31
+ */
 public interface UserService extends IService<User> {
 
     /**
@@ -63,6 +63,7 @@ public interface UserService extends IService<User> {
 
     /**
      * 用户注销
+     *
      * @param request
      * @return
      */
@@ -71,15 +72,17 @@ public interface UserService extends IService<User> {
 
     /**
      * 用户删除
+     *
      * @param userId
      * @param request
      * @return
      */
-    Boolean deleteUser(Long userId,HttpServletRequest request);
+    Boolean deleteUser(Long userId, HttpServletRequest request);
 
 
     /**
      * 根据用户的标签搜索用户
+     *
      * @param tagsList 标签列表
      * @return 根据标签搜索到的用户列表
      */
@@ -90,7 +93,33 @@ public interface UserService extends IService<User> {
     /**
      * 暂定：首页显示所有用户
      * todo：后期优化成根据标签推荐用户
+     *
      * @return
      */
-    Page<User> recommendUsers(long pageSize, long pageNum,HttpServletRequest request);
+    Page<User> recommendUsers(long pageSize, long pageNum, HttpServletRequest request);
+
+
+    /**
+     * 身份校验
+     *
+     * @param request HttpServletRequest request
+     * @return 是否为管理员
+     */
+    boolean isAdmin(HttpServletRequest request);
+
+
+    /**
+     * 判断是否为管理员
+     * @param user
+     * @return
+     */
+    boolean isAdmin(User user);
+
+    /**
+     * 数据脱敏
+     *
+     * @param user 脱敏前的数据
+     * @return 脱敏后的数据
+     */
+    User userDataMasking(User user);
 }
