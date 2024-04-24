@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -69,14 +70,21 @@ public class UserTeamVO implements Serializable {
      */
     private Date updateTime;
 
+
+
     /**
      * 创建人的信息
      */
     private UserVO userVO;
 
     /**
-     * 是否已经加入队伍
+     * 已加入队伍的用户数量
      */
-    private boolean hasJoin = false;
+    private Integer hasJoinNum;
+
+    /**
+     * 用戶是否已经加入队伍
+     */
+    private boolean userHasJoinTeam = false;
 
 }

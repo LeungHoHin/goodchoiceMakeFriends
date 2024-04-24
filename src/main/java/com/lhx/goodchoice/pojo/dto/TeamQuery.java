@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 队伍查询封装类
@@ -18,8 +19,9 @@ import java.util.Date;
 @Data
 public class TeamQuery {
 
-    @TableId(type = IdType.AUTO)
     private Long teamId;
+
+    private List<Long> teamIdList;
 
     /**
      * 队伍名称
@@ -50,6 +52,11 @@ public class TeamQuery {
      * 0-公开，1-私有，2-加密
      */
     private Integer teamStatus;
+
+    /**
+     * 搜索关键词（同时对队伍名称和描述搜索）
+     */
+    private String searchText;
 
 
 }

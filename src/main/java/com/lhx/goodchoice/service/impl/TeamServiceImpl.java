@@ -1,5 +1,6 @@
 package com.lhx.goodchoice.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lhx.goodchoice.common.ErrorCode;
 import com.lhx.goodchoice.exception.BusinessException;
@@ -7,20 +8,26 @@ import com.lhx.goodchoice.mapper.UserMapper;
 import com.lhx.goodchoice.pojo.Team;
 import com.lhx.goodchoice.pojo.User;
 import com.lhx.goodchoice.pojo.UserTeam;
+import com.lhx.goodchoice.pojo.dto.TeamQuery;
 import com.lhx.goodchoice.pojo.enums.TeamStatusEnum;
 import com.lhx.goodchoice.pojo.request.TeamUpdateRequest;
+import com.lhx.goodchoice.pojo.vo.UserTeamVO;
+import com.lhx.goodchoice.pojo.vo.UserVO;
 import com.lhx.goodchoice.service.TeamService;
 import com.lhx.goodchoice.mapper.TeamMapper;
 import com.lhx.goodchoice.service.UserService;
 import com.lhx.goodchoice.service.UserTeamService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -29,8 +36,7 @@ import java.util.Optional;
  * @createDate 2024-04-24 18:15:44
  */
 @Service
-public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
-        implements TeamService {
+public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team> implements TeamService {
     @Resource
     private TeamMapper teamMapper;
 
@@ -171,6 +177,84 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
         Team updateTeam = new Team();
         BeanUtils.copyProperties(teamUpdateRequest, updateTeam);
         return this.updateById(updateTeam);
+    }
+
+    @Override
+    public List<UserTeamVO> listTeams(TeamQuery teamQuery, boolean isAdmin) {
+        LambdaQueryWrapper<Team> queryWrapper = new LambdaQueryWrapper<>();
+        if (teamQuery != null) {
+            //根据id查询
+            Long teamId = teamQuery.getTeamId();
+            if (teamId != null && teamId >= 0) {
+                queryWrapper.eq(Team::getTeamId, teamId);
+            }
+            //根据id列表查询
+            List<Long> teamIdList = teamQuery.getTeamIdList();
+            if (CollectionUtils.isNotEmpty(teamIdList)) {
+                queryWrapper.in(Team::getTeamId, teamIdList);
+            }
+            //根据搜索文本查询
+            String searchText = teamQuery.getSearchText();
+            if (StringUtils.isNotBlank(searchText)) {
+                queryWrapper.like(Team::getTeamName, searchText).or().like(Team::getTeamDescription, searchText);
+            }
+            //根据队伍名称查询
+            String name = teamQuery.getTeamName();
+            if (StringUtils.isNotBlank(name)) {
+                queryWrapper.like(Team::getTeamName, name);
+            }
+            //根据描述查询
+            String description = teamQuery.getTeamDescription();
+            if (StringUtils.isNotBlank(description)) {
+                queryWrapper.like(Team::getTeamDescription, description);
+            }
+            //根据最大人数查询
+            Integer maxNum = teamQuery.getTeamMaxNum();
+            if (maxNum != null && maxNum > 0) {
+                queryWrapper.eq(Team::getTeamMaxNum, maxNum);
+            }
+            //根据队长来查询
+            Long userId = teamQuery.getUserId();
+            if (userId != null && userId > 0) {
+                queryWrapper.eq(Team::getUserId, userId);
+            }
+            //根据状态查询
+            Integer statusValue = teamQuery.getTeamStatus();
+            TeamStatusEnum status = TeamStatusEnum.getStatusByValue(statusValue);
+            if (status == null) {
+                status = TeamStatusEnum.PUBLIC;
+            }
+            if (!isAdmin && status.equals(TeamStatusEnum.PRIVATE)) {
+                throw new BusinessException(ErrorCode.NO_AUTH, "你没有权限");
+            }
+            queryWrapper.eq(Team::getTeamStatus, status.getValue());
+        }
+        //不展示已经过期的队伍
+        queryWrapper.gt(Team::getTeamExpireTime, new Date()).or().isNull(Team::getTeamExpireTime);
+        List<Team> teamList = this.list(queryWrapper);
+        if (teamList == null) {
+            return new ArrayList<>();
+        }
+
+        //关联查询创建人的用户信息
+        ArrayList<UserTeamVO> userTeamVOList = new ArrayList<>();
+        for (Team team : teamList) {
+            Long userId = team.getUserId();
+            if (userId == null) {
+                continue;
+            }
+            UserTeamVO userTeamVO = new UserTeamVO();
+            BeanUtils.copyProperties(team, userTeamVO);
+            User user = userService.getById(userId);
+            if (user != null) {
+                UserVO userVO = new UserVO();
+                BeanUtils.copyProperties(user, userVO);
+                userTeamVO.setUserVO(userVO);
+            }
+            userTeamVOList.add(userTeamVO);
+        }
+        return userTeamVOList;
+
     }
 
 
