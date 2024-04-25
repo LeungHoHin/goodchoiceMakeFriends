@@ -5,7 +5,9 @@ import com.lhx.goodchoice.pojo.Team;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhx.goodchoice.pojo.User;
 import com.lhx.goodchoice.pojo.dto.TeamQuery;
+import com.lhx.goodchoice.pojo.request.DeleteTeamRequest;
 import com.lhx.goodchoice.pojo.request.JoinTeamRequest;
+import com.lhx.goodchoice.pojo.request.QuitTeamRequest;
 import com.lhx.goodchoice.pojo.request.TeamUpdateRequest;
 import com.lhx.goodchoice.pojo.vo.UserTeamVO;
 
@@ -44,4 +46,9 @@ public interface TeamService extends IService<Team> {
     Page<Team> listPageTeams(TeamQuery teamQuery);
 
     boolean joinTeam(JoinTeamRequest joinTeamRequest, User loginUser);
+
+
+    boolean quitTeam(QuitTeamRequest quitTeamRequest, User loginUser);
+
+    boolean deleteTeam(DeleteTeamRequest deleteTeamRequest, User loginUser);
 }

@@ -30,7 +30,7 @@ public class TeamUpdateRequest implements Serializable {
     /**
      * 队伍最大人数
      */
-    private Integer teamMaxNum;
+    private Integer teamMaxNum = 10;
 
     /**
      * 队伍过期时间

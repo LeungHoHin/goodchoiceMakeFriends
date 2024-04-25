@@ -302,7 +302,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         dataMaskedUser.setUserRole(user.getUserRole());
         dataMaskedUser.setUserTags(user.getUserTags());
         dataMaskedUser.setUserProfile(user.getUserProfile());
-        dataMaskedUser.setUserCreatedTeams(user.getUserCreatedTeams());
+        dataMaskedUser.setUserCreatedAndJoinedTeams(user.getUserCreatedAndJoinedTeams());
         return dataMaskedUser;
     }
 

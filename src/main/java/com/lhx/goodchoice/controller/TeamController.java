@@ -11,14 +11,11 @@ import com.lhx.goodchoice.pojo.Team;
 import com.lhx.goodchoice.pojo.User;
 import com.lhx.goodchoice.pojo.UserTeam;
 import com.lhx.goodchoice.pojo.dto.TeamQuery;
-import com.lhx.goodchoice.pojo.request.JoinTeamRequest;
-import com.lhx.goodchoice.pojo.request.TeamAddRequest;
-import com.lhx.goodchoice.pojo.request.TeamUpdateRequest;
+import com.lhx.goodchoice.pojo.request.*;
 import com.lhx.goodchoice.pojo.vo.UserTeamVO;
 import com.lhx.goodchoice.service.TeamService;
 import com.lhx.goodchoice.service.UserService;
 import com.lhx.goodchoice.service.UserTeamService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -126,4 +123,29 @@ public class TeamController {
     }
 
 
+    @PostMapping("/quit")
+    public BaseResponse<Boolean> quitTeam(@RequestBody QuitTeamRequest quitTeamRequest, HttpServletRequest request) {
+        if (quitTeamRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "退出队伍请求参数为空");
+        }
+        User loginUser = userService.getCurrentUser(request);
+        boolean quited = teamService.quitTeam(quitTeamRequest, loginUser);
+        if (!quited) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "退出队伍请失败");
+        }
+        return Result.ok(true);
+    }
+
+    @PostMapping("/delete")
+    public BaseResponse<Boolean> deleteTeam(@RequestBody DeleteTeamRequest deleteTeamRequest, HttpServletRequest request) {
+        if (deleteTeamRequest == null || deleteTeamRequest.getTeamId() == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "删除队伍请求参数为空");
+        }
+        User loginUser = userService.getCurrentUser(request);
+        boolean deleted = teamService.deleteTeam(deleteTeamRequest, loginUser);
+        if (!deleted) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "删除队伍请失败");
+        }
+        return Result.ok(true);
+    }
 }

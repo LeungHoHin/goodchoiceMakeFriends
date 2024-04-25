@@ -10,7 +10,7 @@
             <result property="teamDescription" column="team_description" jdbcType="VARCHAR"/>
             <result property="teamMaxNum" column="team_max_num" jdbcType="INTEGER"/>
             <result property="teamExpireTime" column="team_expire_time" jdbcType="TIMESTAMP"/>
-            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="leaderId" column="leader_id" jdbcType="BIGINT"/>
             <result property="teamStatus" column="team_status" jdbcType="INTEGER"/>
             <result property="teamPassword" column="team_password" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
@@ -21,7 +21,7 @@
 
     <sql id="Base_Column_List">
         team_id,team_name,team_description,
-        team_max_num,team_expire_time,user_id,
+        team_max_num,team_expire_time,leader_id,
         team_status,team_password,create_time,
         update_time,is_deleted,team_num
     </sql>

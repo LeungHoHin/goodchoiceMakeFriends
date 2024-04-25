@@ -42,9 +42,9 @@ public class Team implements Serializable {
     private Date teamExpireTime;
 
     /**
-     * 用户id
+     * 队伍队长的用户id
      */
-    private Long userId;
+    private Long leaderId;
 
     /**
      * 0-公开，1-私有，2-加密

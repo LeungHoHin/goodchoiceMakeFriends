@@ -4,16 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="增加了查询队伍列表的功能">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/common/PageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/request/JoinTeamRequest.java" afterDir="false" />
+    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="增加了加入队伍的功能">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/request/DeleteTeamRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/request/QuitTeamRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4f492fd-df94-4e8b-9f44-4602728621b2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4f492fd-df94-4e8b-9f44-4602728621b2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/TeamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/dto/TeamQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/dto/TeamQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/request/TeamUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/request/TeamUpdateRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/TeamService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/TeamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TeamMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeamMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -272,7 +275,7 @@
       <workItem from="1713783066763" duration="7933000" />
       <workItem from="1713850339380" duration="12221000" />
       <workItem from="1713942742155" duration="17594000" />
-      <workItem from="1714012356087" duration="3925000" />
+      <workItem from="1714012356087" duration="13465000" />
     </task>
     <task id="LOCAL-00001" summary="添加了根据标签搜索用户的方法">
       <option name="closed" value="true" />
@@ -346,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713975213898</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="增加了加入队伍的功能">
+      <option name="closed" value="true" />
+      <created>1714016512841</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714016512841</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,9 +394,19 @@
     <MESSAGE value="新增了添加队伍的功能并完成测试" />
     <MESSAGE value="新增了用户修改队伍配置的功能" />
     <MESSAGE value="增加了查询队伍列表的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了查询队伍列表的功能" />
+    <MESSAGE value="增加了加入队伍的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了加入队伍的功能" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/TeamServiceImpl.java</url>
+          <line>398</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="userList.get(0)" />

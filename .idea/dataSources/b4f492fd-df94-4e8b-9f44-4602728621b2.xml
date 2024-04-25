@@ -1022,7 +1022,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="297" parent="1" name="good_choice">
-      <LastIntrospectionLocalTimestamp>2024-04-25.03:21:00</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-04-25.05:50:33</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="298" parent="1" name="mysql.infoschema">
@@ -1161,8 +1161,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>datetime|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="324" parent="303" name="user_id">
-      <Comment>用户id</Comment>
+    <column id="324" parent="303" name="leader_id">
+      <Comment>队伍队长的用户id</Comment>
       <DasType>bigint|0s</DasType>
       <Position>6</Position>
     </column>

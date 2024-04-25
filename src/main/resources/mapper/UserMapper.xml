@@ -21,7 +21,7 @@
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
             <result property="deleteTime" column="delete_time" jdbcType="TINYINT"/>
             <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
-            <result property="userCreatedAndJoinedTeams" column="user_created_teams" jdbcType="INTEGER"/>
+            <result property="userCreatedAndJoinedTeams" column="user_created_and_joined_teams" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -30,6 +30,6 @@
         user_phone,user_email,user_tags,
         user_profile,user_status,user_role,
         create_time,update_time,delete_time,
-        is_deleted,user_created_teams
+        is_deleted,user_created_and_joined_teams
     </sql>
 </mapper>
