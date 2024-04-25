@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="新增了用户修改队伍配置的功能">
+    <list default="true" id="64dedfc3-7fef-4fae-886c-efaacf0f3f0d" name="Changes" comment="增加了查询队伍列表的功能">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/common/PageRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/request/JoinTeamRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b4f492fd-df94-4e8b-9f44-4602728621b2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b4f492fd-df94-4e8b-9f44-4602728621b2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/controller/TeamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/dto/TeamQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/dto/TeamQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/vo/UserTeamVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/pojo/vo/UserTeamVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/TeamService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lhx/goodchoice/service/impl/TeamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,65 +55,65 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.generated-requests | #1.executor": "Run",
-    "HTTP Request.generated-requests | #14.executor": "Run",
-    "HTTP Request.generated-requests | #2.executor": "Run",
-    "HTTP Request.generated-requests | #3.executor": "Run",
-    "HTTP Request.generated-requests | #4.executor": "Run",
-    "HTTP Request.generated-requests | #7.executor": "Run",
-    "HTTP Request.generated-requests | #8.executor": "Run",
-    "JUnit.InsertUsersTest.doInsertUsers.executor": "Debug",
-    "JUnit.InsertUsersTest.testDoInsertUsers.executor": "Run",
-    "JUnit.RedisTest.test.executor": "Debug",
-    "JUnit.RedissonTest.userTest.executor": "Debug",
-    "JUnit.SampleTest.executor": "Run",
-    "JUnit.SampleTest.testSelect.executor": "Run",
-    "JUnit.UserServiceImplTest.addAccount.executor": "Run",
-    "JUnit.UserServiceImplTest.doInsertUsers.executor": "Run",
-    "JUnit.UserServiceImplTest.executor": "Run",
-    "JUnit.UserServiceImplTest.searchUsersByTags.executor": "Run",
-    "JUnit.UserServiceImplTest.testDoInsertUsers.executor": "Run",
-    "JUnit.UserServiceImplTest.userRegister.executor": "Run",
-    "JUnit.addTest.executor": "Run",
-    "JUnit.addTest.isAdded.executor": "Run",
-    "Maven.goodchoice-backend [compile].executor": "Run",
-    "Maven.goodchoice-backend [install].executor": "Run",
-    "Maven.goodchoice-backend [validate].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.GoodChoiceApplication.executor": "Debug",
-    "Spring Boot.UserCenterApplication.executor": "Debug",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Codes/projects/javaprojects/GoodChoiceMakeFriends/goodchoice-backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Errors",
-    "ts.external.directory.path": "D:\\Programming\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #14.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #3.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #4.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #7.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #8.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsertUsersTest.doInsertUsers.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertUsersTest.testDoInsertUsers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RedisTest.test.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.RedissonTest.userTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.SampleTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SampleTest.testSelect.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.addAccount.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.doInsertUsers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.searchUsersByTags.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.testDoInsertUsers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.userRegister.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.addTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.addTest.isAdded.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.goodchoice-backend [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.goodchoice-backend [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.goodchoice-backend [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.GoodChoiceApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.UserCenterApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Codes/projects/javaprojects/GoodChoiceMakeFriends/goodchoice-backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Programming\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo",
-      "mysql_aurora_aws",
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;,
+      &quot;mysql_aurora_aws&quot;,
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -268,7 +271,8 @@
       <workItem from="1713757736109" duration="6720000" />
       <workItem from="1713783066763" duration="7933000" />
       <workItem from="1713850339380" duration="12221000" />
-      <workItem from="1713942742155" duration="16512000" />
+      <workItem from="1713942742155" duration="17594000" />
+      <workItem from="1714012356087" duration="3925000" />
     </task>
     <task id="LOCAL-00001" summary="添加了根据标签搜索用户的方法">
       <option name="closed" value="true" />
@@ -334,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713959543045</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="增加了查询队伍列表的功能">
+      <option name="closed" value="true" />
+      <created>1713975213898</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713975213898</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +382,8 @@
     <MESSAGE value="增加了redisson的配置并且添加了针对于核心用户的缓存预热任务，进一步提升了主页性能" />
     <MESSAGE value="新增了添加队伍的功能并完成测试" />
     <MESSAGE value="新增了用户修改队伍配置的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增了用户修改队伍配置的功能" />
+    <MESSAGE value="增加了查询队伍列表的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了查询队伍列表的功能" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

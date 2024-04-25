@@ -1022,7 +1022,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="297" parent="1" name="good_choice">
-      <LastIntrospectionLocalTimestamp>2024-04-24.10:21:07</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-04-25.03:21:00</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="298" parent="1" name="mysql.infoschema">
@@ -1132,7 +1132,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>unique_index_tag_name</UnderlyingIndexName>
     </key>
     <column id="319" parent="303" name="team_id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>13</AutoIncrement>
       <Comment>队伍id</Comment>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
@@ -1307,8 +1307,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>16</Position>
     </column>
-    <column id="349" parent="304" name="user_created_teams">
-      <Comment>用户已创建队伍</Comment>
+    <column id="349" parent="304" name="user_created_and_joined_teams">
+      <Comment>用户已创建和加入队伍</Comment>
       <DasType>int|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <Position>17</Position>
@@ -1324,7 +1324,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="352" parent="305" name="user_team_id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>8</AutoIncrement>
       <Comment>用户队伍关系id</Comment>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>

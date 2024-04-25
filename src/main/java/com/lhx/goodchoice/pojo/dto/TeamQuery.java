@@ -1,10 +1,7 @@
 package com.lhx.goodchoice.pojo.dto;
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.lhx.goodchoice.common.PageRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,8 +13,12 @@ import java.util.List;
  *
  * @author 梁浩轩
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class TeamQuery {
+public class TeamQuery extends PageRequest {
+
+    private static final long serialVersionUID = 6404207821559997240L;
+
 
     private Long teamId;
 

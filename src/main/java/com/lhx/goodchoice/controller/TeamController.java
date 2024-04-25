@@ -2,6 +2,7 @@ package com.lhx.goodchoice.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.goodchoice.common.BaseResponse;
 import com.lhx.goodchoice.common.ErrorCode;
 import com.lhx.goodchoice.common.Result;
@@ -10,12 +11,14 @@ import com.lhx.goodchoice.pojo.Team;
 import com.lhx.goodchoice.pojo.User;
 import com.lhx.goodchoice.pojo.UserTeam;
 import com.lhx.goodchoice.pojo.dto.TeamQuery;
+import com.lhx.goodchoice.pojo.request.JoinTeamRequest;
 import com.lhx.goodchoice.pojo.request.TeamAddRequest;
 import com.lhx.goodchoice.pojo.request.TeamUpdateRequest;
 import com.lhx.goodchoice.pojo.vo.UserTeamVO;
 import com.lhx.goodchoice.service.TeamService;
 import com.lhx.goodchoice.service.UserService;
 import com.lhx.goodchoice.service.UserTeamService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -97,4 +100,30 @@ public class TeamController {
                 team.setHasJoinNum(teamIdUserTeamList.getOrDefault(team.getTeamId(), new ArrayList<>()).size()));
         return Result.ok(userTeamVOList);
     }
+
+
+    @GetMapping("/list/page")
+    public BaseResponse<Page<Team>> listPage(TeamQuery teamQuery) {
+        if (teamQuery == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传入的teamQuery为空");
+        }
+        Page<Team> teamPage = teamService.listPageTeams(teamQuery);
+        return Result.ok(teamPage);
+    }
+
+
+    @PostMapping("/join")
+    public BaseResponse<Boolean> joinTeam(@RequestBody JoinTeamRequest joinTeamRequest, HttpServletRequest request) {
+        if (joinTeamRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "加入队伍请求参数为空");
+        }
+        User loginUser = userService.getCurrentUser(request);
+        boolean isJoined = teamService.joinTeam(joinTeamRequest, loginUser);
+        if (!isJoined) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "加入队伍请失败");
+        }
+        return Result.ok(true);
+    }
+
+
 }

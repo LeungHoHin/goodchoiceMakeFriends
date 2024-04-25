@@ -74,7 +74,7 @@ public class User implements Serializable {
     /**
      * 用户已创建队伍
      */
-    private Integer userCreatedTeams;
+    private Integer userCreatedAndJoinedTeams;
 
     /**
      * 用户角色 0-普通用户 1-管理员
