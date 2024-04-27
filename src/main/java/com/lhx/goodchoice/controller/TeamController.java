@@ -2,6 +2,7 @@ package com.lhx.goodchoice.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lhx.goodchoice.common.BaseResponse;
 import com.lhx.goodchoice.common.ErrorCode;
@@ -66,6 +67,18 @@ public class TeamController {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "数据更新失败");
         }
         return Result.ok(true);
+    }
+
+    @GetMapping("/get")
+    public BaseResponse<Team> getCurrentTeam(Long teamId) {
+        if (teamId == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传入的队伍ID为空");
+        }
+        Team team = teamService.getById(teamId);
+        if (team == null) {
+            throw new BusinessException(ErrorCode.NULL_ERROR, "队伍为空");
+        }
+        return Result.ok(team);
     }
 
 
@@ -148,4 +161,37 @@ public class TeamController {
         }
         return Result.ok(true);
     }
+
+
+    @GetMapping("/my/createdTeams")
+    public BaseResponse<List<UserTeamVO>> listMyCreatedTeams(TeamQuery teamQuery, HttpServletRequest request) {
+        if (teamQuery == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传入的teamQuery为空");
+        }
+        User loginUser = userService.getCurrentUser(request);
+        teamQuery.setUserId(loginUser.getUserId());
+        List<UserTeamVO> userTeamVOList = teamService.listTeams(teamQuery, true);
+        return Result.ok(userTeamVOList);
+
+    }
+
+
+    @GetMapping("/my/joinedTeams")
+    public BaseResponse<List<UserTeamVO>> listMyJoinedTeams(TeamQuery teamQuery, HttpServletRequest request) {
+        if (teamQuery == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "传入的teamQuery为空");
+        }
+        User loginUser = userService.getCurrentUser(request);
+        LambdaQueryWrapper<UserTeam> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserTeam::getUserId, loginUser.getUserId());
+        List<UserTeam> userTeamList = userTeamService.list(queryWrapper);
+        Map<Long, List<UserTeam>> listMap = userTeamList.stream()
+                .collect(Collectors.groupingBy(UserTeam::getTeamId));
+        List<Long> idList = new ArrayList<>(listMap.keySet());
+        teamQuery.setTeamIdList(idList);
+        List<UserTeamVO> userTeamVOList = teamService.listTeams(teamQuery, true);
+        return Result.ok(userTeamVOList);
+    }
+
+
 }

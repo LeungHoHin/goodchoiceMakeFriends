@@ -122,4 +122,6 @@ public interface UserService extends IService<User> {
      * @return 脱敏后的数据
      */
     User userDataMasking(User user);
+
+    List<User> matchUsers(long num, User user);
 }

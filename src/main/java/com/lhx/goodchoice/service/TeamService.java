@@ -51,4 +51,5 @@ public interface TeamService extends IService<Team> {
     boolean quitTeam(QuitTeamRequest quitTeamRequest, User loginUser);
 
     boolean deleteTeam(DeleteTeamRequest deleteTeamRequest, User loginUser);
+
 }

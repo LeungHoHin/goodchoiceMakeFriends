@@ -45,6 +45,11 @@ public class UserTeamVO implements Serializable {
     private Integer teamMaxNum;
 
     /**
+     * 队伍现在拥有人数
+     */
+    private Integer teamNum;
+
+    /**
      * 队伍过期时间
      */
     private Date teamExpireTime;
